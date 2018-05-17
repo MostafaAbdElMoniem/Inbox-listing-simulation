@@ -10,7 +10,7 @@ import {
   StyleSheet,
   Text,
   View,
-  Button
+  Button,TouchableOpacity
 } from 'react-native';
 
 
@@ -65,21 +65,18 @@ export default class InboxListing extends Component {
 
   }
 
-
   setRejectionID(elm) {
-    alert(elm.destinationId);
     this.props.navigation.navigate('ListDetails', elm)
   }
 
   render() {
 
     let listItems = this.state.inboxList.map((elm) => {
-      return <View key={elm.id} onPress={this.setRejectionID.bind(this, elm)}>
+      return <TouchableOpacity key={elm.id} onPress={this.setRejectionID.bind(this, elm)}>
         <Text>{elm.title}</Text>
         <Text>{elm.description.text}</Text>
         <Text>{elm.date}</Text>
-        <Button title="Go to Marwa" onPress={this.setRejectionID.bind(this, elm)} />
-      </View>
+      </TouchableOpacity>
     });
 
     return (
