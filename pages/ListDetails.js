@@ -66,6 +66,15 @@ export default class ListDetails extends Component {
               </View>
               
           </View>
+          <View style={styles.line}></View>
+          <View>
+            <Text style={{
+                textAlign: 'left',
+                color: '#666666',
+                fontSize: 13,
+                margin: 10
+              }}>06 de Mayo de 2018</Text>
+          </View>
         </View>
       </View>
     );
