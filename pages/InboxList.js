@@ -9,16 +9,19 @@ import {
   Platform,
   StyleSheet,
   Text,
-  View
+  View,
+  Button
 } from 'react-native';
 
 
-export default class App extends Component {
+export default class InboxListing extends Component {
 
   render() {
     return (
       <View style={styles.container}>
         <Text>Mustafa</Text>
+        
+        <Button title="Go to Marwa" onPress={() => this.props.navigation.navigate('ListDetails')} />
       </View>
     );
   }

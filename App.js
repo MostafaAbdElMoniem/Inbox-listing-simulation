@@ -11,15 +11,33 @@ import {
   Text,
   View
 } from 'react-native';
+import { createStackNavigator } from 'react-navigation'
+import Login from './pages/LoginComponent'
+import InboxListing from './pages/InboxList'
+import ListDetails from './pages/ListDetails'
 
+
+const RootStack = createStackNavigator({
+  Login: {
+    path: '/login',
+    screen: Login
+  },
+  InboxListing: {
+    path: '/InboxListing',
+    screen: InboxListing
+  },
+  ListDetails: {
+    path: '/ListDetails',
+    screen: ListDetails
+  }
+});
 
 export default class App extends Component {
 
+
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Marwa and Maha</Text>
-      </View>
+      <RootStack />
     );
   }
 }

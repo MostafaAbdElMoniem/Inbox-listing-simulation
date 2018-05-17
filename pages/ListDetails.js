@@ -13,7 +13,7 @@ import {
 } from 'react-native';
 
 
-export default class App extends Component {
+export default class ListDetails extends Component {
 
   render() {
     return (
