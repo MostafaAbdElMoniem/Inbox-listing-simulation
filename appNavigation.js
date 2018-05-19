@@ -18,7 +18,7 @@ import InboxListing from './pages/InboxList'
 import ListDetails from './pages/ListDetails'
 import Splash from './pages/splash'
 import Home from './pages/Home'
-import DrawerContainer from'./pages/DrawContainer'
+import DrawerContainer from './pages/DrawContainer'
 
 
 // drawer stack
@@ -32,17 +32,21 @@ const DrawerStack = DrawerNavigator(
 
         gesturesEnabled: false,
         // contentComponent: DrawerContainer,
+        headerMode: 'float',
     }
 )
 
 const DrawerNavigation = createStackNavigator({
-    DrawerStack: { screen: DrawerStack }
+    DrawerStack: { screen: DrawerStack },
+    ListDetails: { screen: ListDetails },
+    
+
 }, {
         headerMode: 'float',
         navigationOptions: ({ navigation }) => ({
             headerStyle: { backgroundColor: 'green' },
             title: 'Logged In to your app!',
-            headerLeft: <Icon name="menu" size={35} onPress={() => this.drawer.open()} />
+            headerLeft: <Icon name="menu" size={35} onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())} />
         })
     })
 
