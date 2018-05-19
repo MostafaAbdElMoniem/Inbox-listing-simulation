@@ -12,15 +12,12 @@ import {
   View,
   Button
 } from 'react-native';
-
-
 export default class Login extends Component {
 
   render() {
     return (
       <View style={styles.container}>
-        <Text>Maha</Text>
-        <Button title="Go to Mustafa" onPress={() => this.props.navigation.navigate('InboxListing')} />
+        <Button title="Go to home" onPress={() => {this.props.navigation.navigate('drawerStack')}} />
       </View>
     );
   }

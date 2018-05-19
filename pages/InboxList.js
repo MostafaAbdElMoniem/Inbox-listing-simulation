@@ -9,13 +9,22 @@ import {
   Platform,
   StyleSheet,
   Text,
-  View,
+  View,Image,
   Button,TouchableOpacity
 } from 'react-native';
 
 
 
 export default class InboxListing extends Component {
+  static navigationOptions = {
+    drawerLabel: 'Inbox Listing',
+    drawerIcon: () => (
+        <Image
+            source={{ uri: `https://dummyimage.com/60x60/000/fff.jpg&text=1` }}
+            style={{ width: 30, height: 30, borderRadius: 15 }}
+        />
+    )
+}
   constructor(props) {
     super(props);
     this.state = {
