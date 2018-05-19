@@ -9,12 +9,11 @@ import {
   Platform,
   StyleSheet,
   Text,
-  View,Image
+  View, Image, Icon
 } from 'react-native';
 
 
 export default class ListDetails extends Component {
- 
   render() {
     return (
       <View style={styles.container}>

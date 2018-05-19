@@ -16,21 +16,6 @@ import AppNavigation from './appNavigation'
 
 
 
-// const RootStack = createStackNavigator({
-//   Login: {
-//     path: '/login',
-//     screen: Login
-//   },
-//   InboxListing: {
-//     path: '/InboxListing',
-//     screen: InboxListing
-//   },
-//   ListDetails: {
-//     path: '/ListDetails',
-//     screen: ListDetails
-//   }
-// });
-
 export default class App extends Component {
 
 

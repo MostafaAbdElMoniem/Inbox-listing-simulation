@@ -12,41 +12,40 @@ import {
     View
 } from 'react-native';
 import { Icon } from 'react-native-elements';
-import { createStackNavigator, DrawerNavigator } from 'react-navigation'
+import {DrawerActions, StackActions, createDrawerNavigator, createStackNavigator, withNavigation,
+     DrawerItems, SafeAreaView, NavigationActions} from 'react-navigation'
 import Login from './pages/LoginComponent'
 import InboxListing from './pages/InboxList'
 import ListDetails from './pages/ListDetails'
 import Splash from './pages/splash'
-import Home from './pages/Home'
 import DrawerContainer from './pages/DrawContainer'
 
 
 // drawer stack
-const DrawerStack = DrawerNavigator(
+const DrawerStack = createDrawerNavigator(
     {
-        Home: { screen: Home },
+       
         InboxListing: { screen: InboxListing },
 
     }
     , {
 
         gesturesEnabled: false,
-        // contentComponent: DrawerContainer,
+        contentComponent: DrawerContainer,
         headerMode: 'float',
     }
 )
 
 const DrawerNavigation = createStackNavigator({
     DrawerStack: { screen: DrawerStack },
-    ListDetails: { screen: ListDetails },
     
 
 }, {
         headerMode: 'float',
         navigationOptions: ({ navigation }) => ({
-            headerStyle: { backgroundColor: 'green' },
-            title: 'Logged In to your app!',
-            headerLeft: <Icon name="menu" size={35} onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())} />
+            // headerStyle: { backgroundColor: 'green' },
+            // title: 'Logged In to your app!',
+            headerLeft: <Icon name="menu" size={35} onPress={() =>navigation.dispatch(DrawerActions.toggleDrawer())} />
         })
     })
 
@@ -55,16 +54,17 @@ const LoginStack = createStackNavigator({
     Splash: { screen: Splash },
     Login: { screen: Login },
 }, {
-        headerMode: 'float',
+        headerMode: 'none',
         navigationOptions: {
-            headerStyle: { backgroundColor: 'red' },
-            title: 'You are not logged in'
+            // headerStyle: { backgroundColor: 'red' },
+            // title: 'You are not logged in'
         }
     })
 
 // Manifest of possible screens
 const PrimaryNav = createStackNavigator({
     loginStack: { screen: LoginStack },
+    ListDetails: { screen: ListDetails },
     drawerStack: { screen: DrawerNavigation }
 }, {
         // Default config for all screens

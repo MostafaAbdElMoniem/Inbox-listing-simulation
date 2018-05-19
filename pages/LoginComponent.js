@@ -17,7 +17,7 @@ export default class Login extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Button title="Go to home" onPress={() => {this.props.navigation.navigate('drawerStack')}} />
+        <Button title="Login" onPress={() => { this.props.navigation.navigate('drawerStack') }} />
       </View>
     );
   }

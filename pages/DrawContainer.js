@@ -1,6 +1,7 @@
 import React from 'react'
 import { StyleSheet, Text, View, Image } from 'react-native'
-import {NavigationActions,withNavigation} from 'react-navigation'
+import { StackActions, createDrawerNavigator, createStackNavigator, withNavigation
+    , DrawerItems, SafeAreaView, NavigationActions} from 'react-navigation'
 
 export default class DrawerContainer extends React.Component {
 
@@ -16,21 +17,17 @@ export default class DrawerContainer extends React.Component {
   render() {
     const { navigation } = this.props
     return (
-      <View style={styles.container} ref={(ref) => { this.drawer = ref; }}>
+      <View style={styles.container}>
+      <Image   source={{ uri: `https://www.seeklogo.net/wp-content/uploads/2013/06/vodafone-group-vector-logo-400x400.png` }}
+            style={{ width:'100%',marginBottom:50, height:60 , borderRadius: 15 }}/>
+        
         <Text
-          onPress={() => {
-           navigation.navigate('Home')
-        }}
-          style={styles.uglyDrawerItem}>
-         Home
-        </Text>
-        <Text
-          onPress={() => navigation.navigate('InboxList')}
+          onPress={() => navigation.navigate('InboxListing')}
           style={styles.uglyDrawerItem}>
           InboxList
         </Text>
         <Text
-          onPress={this.logout}
+          onPress={() => navigation.navigate('Login')}
           style={styles.uglyDrawerItem}>
           Log Out
         </Text>
