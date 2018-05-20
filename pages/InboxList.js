@@ -154,6 +154,23 @@ export default class InboxListing extends Component {
 
   }
 
+  
+  componentWillMount() {
+    async function getItem(item) {
+      try {
+        const value = await AsyncStorage.getItem(item);
+        if (!value) {
+          debugger
+          this.props.navigation.navigate('Login')
+        }
+      } catch (error) {
+        debugger
+      }
+    }
+    //getItem('username');
+  }
+
+
   setRejectionID(elm) {
     this.props.navigation.navigate('ListDetails', elm)
   }

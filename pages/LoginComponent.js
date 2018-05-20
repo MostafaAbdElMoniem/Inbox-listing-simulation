@@ -1,43 +1,100 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component } from 'react';
 import {
+  View,
   Platform,
   StyleSheet,
-  Text,
-  View,
-  Button
+  ImageBackground,
+  Text, AsyncStorage
 } from 'react-native';
+import { Container, Header, Left, Right, Body, Title, Button, Icon } from 'native-base';
+import FormComponent from './../components/FormComponent'
+
 export default class Login extends Component {
+
+  componentWillMount() {
+    async function getItem(item) {
+      try {
+        const value = await AsyncStorage.getItem(item);
+        if (value) {
+          this.props.navigation.navigate('InboxListing')
+        }
+        // else{
+        //   this.props.navigation.navigate('Login')
+        // }
+      } catch (error) {
+      }
+    }
+    getItem('username');
+  }
 
   render() {
     return (
-      <View style={styles.container}>
-        <Button title="Login" onPress={() => { this.props.navigation.navigate('drawerStack') }} />
-      </View>
+
+      <Container style={styles.container}>
+        {/* <View> */}
+        <ImageBackground source={require('./../images/crowd.jpg')}
+          style={styles.backgroundImage}>
+          <Text style={styles.mainTitle}>Welcome!</Text>
+          <Text style={styles.longText}>We hope you enjoy the stay!</Text>
+          <View style={styles.whiteBorder}></View>
+          <Text style={styles.signInText}>Sign in</Text>
+          <FormComponent style={styles.formContainer} isLogged={(flag, username, password) => {
+            if (flag === true) {
+              AsyncStorage.setItem('username', username);
+              AsyncStorage.setItem('password', password);
+              this.props.navigation.navigate('InboxListing')
+            }
+            else {
+              alert("Wrong Username or password, please try again");
+            }
+          }} />
+        </ImageBackground>
+        {/* </View> */}
+      </Container>
+
     );
   }
+
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    // flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
   },
-  welcome: {
+  backgroundImage: {
+    width: '100%',
+    height: '100%',
+    flex: 1,
+    paddingTop: 30,
+    paddingBottom: 30,
+  },
+  formContainer: {
+    width: '80%',
+  },
+  mainTitle: {
+    color: '#FFFFFF',
+    fontSize: 30,
+    fontWeight: 'bold',
+    textAlign: 'center'
+  },
+  longText: {
+    color: '#FFFFFF',
+    fontSize: 25,
+    textAlign: 'center',
+  },
+  whiteBorder: {
+    height: 3,
+    width: 40,
+    backgroundColor: '#FFFFFF',
+    marginLeft: '45%',
+    marginTop: 20,
+  },
+  signInText: {
+    color: '#FFFFFF',
     fontSize: 20,
     textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+    marginTop: 20,
+  }
 });
