@@ -16,6 +16,10 @@ import Login from './pages/LoginComponent'
 import InboxListing from './pages/InboxList'
 import ListDetails from './pages/ListDetails'
 
+import { createStore, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
+import reducers from './reducers';
+import ReduxThunk from 'redux-thunk';
 
 const RootStack = createStackNavigator({
   Login: {
@@ -37,26 +41,10 @@ export default class App extends Component {
 
   render() {
     return (
-      <RootStack />
+      <Provider store={createStore(reducers, {}, applyMiddleware(ReduxThunk))}>
+        <RootStack />
+      </Provider>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
