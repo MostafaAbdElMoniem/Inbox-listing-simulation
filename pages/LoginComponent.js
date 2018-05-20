@@ -24,7 +24,7 @@ export default class Login extends Component {
           <Text style={styles.signInText}>Sign in</Text>
           <FormComponent style={styles.formContainer} isLogged={(flag) => {
             if (flag === true) {
-              this.props.navigation.navigate('InboxListing');
+              this.props.navigation.navigate('drawerStack') 
             }
             else {
               alert("Wrong Username or password, please try again");
